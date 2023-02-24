@@ -1,0 +1,48 @@
+body {
+    margin: 8px 20px !important;
+    background-color: #F8E5FF;
+}
+.title_menu {
+    text-align: center;
+}
+.almacen_button {
+    text-align: end;
+}
+.buscar {
+    display: flex;
+    justify-content: center;
+}
+.cont {
+    display: flex;
+    justify-content: center;
+}
+.boton {
+    display: flex;
+    justify-content: center;
+}
+.struc {
+    display: flex;
+    justify-content: center;
+}
+.butoneditar {
+    display: flex;
+    justify-content: center;
+}
+.busquedafecha {
+    display: flex;
+    justify-content: center;
+}
+.magic-btn{
+    position: absolute;
+    left: 80%;
+    top: 10%;
+}
+.carrito{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: flex;
+}
+.carrito h6{
+    padding: 0 5px;
+}
