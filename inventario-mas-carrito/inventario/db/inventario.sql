@@ -55,7 +55,7 @@ INSERT INTO `almacen` (`id`, `nombre`, `codigo`, `preciocompra`, `precioventa`, 
 --
 
 CREATE TABLE `productos` (
-  `id` int(4) NOT NULL,
+  `id` int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nombre` varchar(30) NOT NULL,
   `codigo` varchar(20) NOT NULL,
   `preciocompra` int(7) NOT NULL,
