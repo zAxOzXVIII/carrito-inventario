@@ -1,5 +1,6 @@
 <?php
     require('funciones.php');
+    eliminarSession();
     $conexion=mysqli_connect('localhost','root','','inventario');
     $accion = (isset($_POST['boton']))?$_POST['boton']:"";
     $id = (isset($_POST['id_p']))?$_POST['id_p']:"";
@@ -86,9 +87,9 @@
         <div class="containe bg-white rounded shadow p-4 col-xl-4 col-lg-6">
             <form action="buscador.php" method="post">
                 <div class="mb-3">    
-                    <input class="form-control" placeholder="Buscar por codigo" type="text" name="buscar" id="">
+                    <input class="form-control" placeholder="Buscar por codigo" required minlength="1" type="text" name="buscar" id="busqueda">
                     <br>
-                    <div class="boton"><input class="btn btn-secondary" type="submit" value="Buscar"></div>
+                    <div class="boton"><input class="btn btn-secondary" type="submit" id="boton" value="Buscar"></div>
                 </div>
             </form>
         </div>
@@ -148,5 +149,6 @@
         echo var_dump($codigo);
     }
     ?>
+<script type="text/javascript" src="workshop.js"></script>
 </body>
 </html>

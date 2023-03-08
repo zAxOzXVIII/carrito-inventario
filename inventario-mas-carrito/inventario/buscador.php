@@ -1,8 +1,17 @@
 <?php
-
+    require("funciones.php");
+    // $conexion=mysqli_connect('localhost','root','','inventario');
+    $accion = (isset($_POST['boton']))?$_POST['boton']:"";
+    $id = (isset($_POST['id_p']))?$_POST['id_p']:"";
+// carrito
+    $carritoLleno = mostrarCantidadArticulos();
+    if($accion=="Vender"){
+        seleccionarVentas($id);
+        // header('Location: buscador.php');
+    }
+// 
     $conexion=mysqli_connect('localhost','root','','inventario');
-
-
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +48,11 @@
                 </tr>
 
                 <?php
-                $buscar = $_POST['buscar'];
+                $dato = (isset($_POST['buscar']))?$_POST['buscar']:"";
+                if(!empty($dato)){
+                    $_SESSION["busqueda"]=$dato;
+                }
+                $buscar = $_SESSION["busqueda"];
                 $sql = "SELECT * FROM productos where codigo like '$buscar' '%' order by id desc";
                 $result = mysqli_query($conexion, $sql);
                 while ($mostrar = mysqli_fetch_row($result)){
@@ -63,13 +76,10 @@
                         <a href="sp_eliminar.php?
                         id=<?php echo $mostrar['0']?>
                         ">Eliminar</a>
-                        <a href="ventas.php?
-                        id=<?php echo $mostrar['0']?> &
-                        nombre=<?php echo $mostrar['1']?> &
-                        preciocompra=<?php echo $mostrar['2']?> &
-                        precioventa=<?php echo $mostrar['3']?> &
-                        codigo=<?php echo $mostrar['4']?>
-                        ">Vender</a>
+                        <form method="POST">
+                            <input type="submit" name="boton" value="Vender">
+                            <input type="hidden" name="id_p" value="<?php echo $mostrar['0']?>">
+                        </form>
                     </td>
                 </tr>
                 <?php

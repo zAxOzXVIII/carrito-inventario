@@ -209,4 +209,12 @@ function codigoAzar($min,$max,$count){
 	return $response;
 }
 
+function eliminarSession(){
+	session_start();
+
+	session_unset();
+	
+	session_destroy();
+}
+
 ?>
